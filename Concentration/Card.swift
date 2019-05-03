@@ -26,7 +26,21 @@ struct Card {
     
     var isFaceUp = false
     var isMatched = false
-    
     var identifier: Int
+    
+    static var identifierFactory = 0
+    
+    // Static function, accessible from Card TYPE
+    static func getUniqueIdentifier() -> Int {
+        
+        // Can access static vars inside static methods directly
+        identifierFactory += 1
+        return identifierFactory
+    }
+    
+    // Inits tend to have same external, internal variable names
+    init() {
+        self.identifier = Card.getUniqueIdentifier()
+    }
     
 }
