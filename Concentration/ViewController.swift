@@ -26,6 +26,8 @@ class ViewController: UIViewController {
     
     @IBOutlet var cardButtons: [UIButton]!
     
+    // MARK: Handle Card Touch Behavior
+    
     @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
         
@@ -58,7 +60,7 @@ class ViewController: UIViewController {
         }
     }
     
-    var emojiChoices = ["🎃","👻", "😭", "🐲", "👹", "😱", "☠️", "🕷", "☃️",]
+    var emojiChoices = ["🎃","👻", "😭", "🐲", "👹", "😱", "☠️", "🕷", "☃️"]
     
     // Dictionary. Int key, String (emoji) value
     // var emoji = Dictionary<Int, String>()
