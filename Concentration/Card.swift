@@ -21,17 +21,26 @@ import Foundation
 // Classes are reference types: object lives in a heap,
 // we have pointer to it. When we pass an object around,
 // we are passing pointers to the obj, not a copy/actual obj
+// Hashable: subscribing to the Hashable protocol
 
-struct Card {
+struct Card: Hashable {
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(identifier)
+    }
+    
+    static func == (lhs: Card, rhs: Card) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
     
     var isFaceUp = false
     var isMatched = false
-    var identifier: Int
+    private var identifier: Int
     
-    static var identifierFactory = 0
+    private static var identifierFactory = 0
     
     // Static function, accessible from Card TYPE
-    static func getUniqueIdentifier() -> Int {
+    private static func getUniqueIdentifier() -> Int {
         
         // Can access static vars inside static methods directly
         identifierFactory += 1
